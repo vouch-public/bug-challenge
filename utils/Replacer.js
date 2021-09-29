@@ -2,14 +2,18 @@ const _ = require('lodash')
 
 const tag_cleaner = (tag, open_tag, close_tag) => tag.replace(open_tag, '').replace(close_tag, '')
 
-const tags = [ 
+const tags = [
     {
         tag: /\{\{(.*?)\}\}/g,
         open_tag: /^\{\{/,
         close_tag: /\}\}$/,
-        resolver: function(data) {
+        resolver: function (data) {
             return (tag) => _.get(data, tag_cleaner(tag, this.open_tag, this.close_tag))
         }
+    },
+    {
+        tag: /"/g,
+        resolver: () => '\\"'
     }
 ]
 

@@ -9,7 +9,7 @@ describe('App', () => {
     })
 
     it('Test-2 / should work when using sample2.json', () => {
-        const expected_text = 'you are watching "chef recommendation" must try!'
+        const expected_text = "you are watching 'chef recommendation' must try!"
         const text_2 = app('./data/formatted_text.txt', './data/sample2.json', 'result2.json')
         expect(text_2.processed).to.be.eq(expected_text)
     })
